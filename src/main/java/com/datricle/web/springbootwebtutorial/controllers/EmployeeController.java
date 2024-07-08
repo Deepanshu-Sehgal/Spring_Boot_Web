@@ -2,7 +2,7 @@ package com.datricle.web.springbootwebtutorial.controllers;
 
 import com.datricle.web.springbootwebtutorial.dto.EmployeeDTO;
 import com.datricle.web.springbootwebtutorial.entities.EmployeeEntity;
-import com.datricle.web.springbootwebtutorial.repositories.EmployeeRepository;
+import com.datricle.web.springbootwebtutorial.services.EmployeeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,10 +11,10 @@ import java.util.List;
 @RequestMapping(path = "/employees")
 public class EmployeeController {
 
-    private final EmployeeRepository employeeRepository;
+    private final EmployeeService employeeService;
 
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping(path = "/getSecretMessage")
@@ -25,19 +25,19 @@ public class EmployeeController {
 
     //    PathVariable
     @GetMapping(path = "/{employeeId}")
-    public EmployeeEntity getEmployeeById(@PathVariable Long employeeId) {
-        return employeeRepository.findById(employeeId).orElse(null);
+    public EmployeeDTO getEmployeeById(@PathVariable Long employeeId) {
+        return employeeService.getEmployeeById(employeeId);
     }
 
     //  RequestParams
     @GetMapping
-    public List<EmployeeEntity> getAllEmployee(@RequestParam(name = "inputAge",required = false) Integer age, @RequestParam(required = false) String sortBy) {
-        return employeeRepository.findAll();
+    public List<EmployeeDTO> getAllEmployee(@RequestParam(name = "inputAge", required = false) Integer age, @RequestParam(required = false) String sortBy) {
+        return employeeService.getAllEmployee();
     }
 
     @PostMapping
-    public EmployeeEntity createNewEmployee(@RequestBody EmployeeEntity inputEmployee) {
-        return employeeRepository.save(inputEmployee);
+    public EmployeeDTO createNewEmployee(@RequestBody EmployeeEntity inputEmployee) {
+        return employeeService.createNewEmployee(inputEmployee);
     }
 
     @PutMapping
