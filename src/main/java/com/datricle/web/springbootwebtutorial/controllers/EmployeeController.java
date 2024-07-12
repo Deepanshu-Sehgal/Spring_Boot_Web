@@ -27,7 +27,7 @@ public class EmployeeController {
     }
 
 
-    //    PathVariable
+    //PathVariable
     @GetMapping(path = "/{employeeId}")
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable Long employeeId) {
         Optional<EmployeeDTO> employeeDTO = employeeService.getEmployeeById(employeeId);
@@ -36,7 +36,7 @@ public class EmployeeController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    //  RequestParams
+    //RequestParams
     @GetMapping
     public ResponseEntity<List<EmployeeDTO>> getAllEmployee(@RequestParam(name = "inputAge", required = false) Integer age, @RequestParam(required = false) String sortBy) {
         return ResponseEntity.ok(employeeService.getAllEmployee());

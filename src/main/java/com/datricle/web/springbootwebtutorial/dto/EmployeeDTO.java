@@ -1,6 +1,7 @@
 package com.datricle.web.springbootwebtutorial.dto;
 
 
+import com.datricle.web.springbootwebtutorial.annotatins.EmployeeRoleValidation;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
@@ -35,12 +36,15 @@ public class EmployeeDTO {
 
 
     @NotBlank(message = "The role of the employee can not be blank")
-    @Pattern(regexp = "^(ADMIN|USER)$", message = "Role of Employee can be USER or ADMIN")
+//    @Pattern(regexp = "^(ADMIN|USER)$", message = "Role of Employee can be USER or ADMIN")
+    @EmployeeRoleValidation
     private String role; //Admin,user
 
     @NotNull(message = "Salary of Employee should be not null")
     @Positive(message = "Salary of Employee should be positive")
     @Digits(integer = 6, fraction = 2, message = "The salary can be in the form XXXXX.YY")
+    @DecimalMax(value = "100000.99")
+    @DecimalMin(value = "100.50")
     private Double salary;
 
     @PastOrPresent(message = "DateOfJoining field in Employee cannot be in the future")
