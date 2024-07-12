@@ -17,7 +17,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class EmployeeDTO {
     private Long id;
-
     //@NotNull(message = "Required field in Employee: name")
     //@NotEmpty(message = "Name of the employee can not be empty")
     @NotBlank(message = "Name of the employee can not be empty")
@@ -45,5 +44,4 @@ public class EmployeeDTO {
 
     @JsonProperty("isActive")
     private Boolean isActive;
-
 }
