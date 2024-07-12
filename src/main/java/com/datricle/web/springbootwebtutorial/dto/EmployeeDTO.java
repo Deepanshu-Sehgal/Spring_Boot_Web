@@ -25,11 +25,14 @@ public class EmployeeDTO {
     private String name;
 
     @Email(message = "Email should be valid for eg: abc@gmail.com")
+    @NotBlank(message = "Email of the employee cannot be blank")
     private String email;
 
+    @NotNull(message = "age of the employee cannot be blank")
     @Max(value = 80, message = "age cannot be greater than 80")
     @Min(value = 18, message = "age cannot be less than 18")
     private Integer age;
+
 
     @NotBlank(message = "The role of the employee can not be blank")
     @Pattern(regexp = "^(ADMIN|USER)$", message = "Role of Employee can be USER or ADMIN")
@@ -43,6 +46,7 @@ public class EmployeeDTO {
     @PastOrPresent(message = "DateOfJoining field in Employee cannot be in the future")
     private LocalDate dateOfJoining;
 
+    @AssertTrue(message = "Employee should be active")
     @JsonProperty("isActive")
     private Boolean isActive;
 }
