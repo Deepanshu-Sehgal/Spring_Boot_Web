@@ -1,7 +1,6 @@
 package com.datricle.web.springbootwebtutorial.controllers;
 
 import com.datricle.web.springbootwebtutorial.dto.EmployeeDTO;
-import com.datricle.web.springbootwebtutorial.entities.EmployeeEntity;
 import com.datricle.web.springbootwebtutorial.services.EmployeeService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
