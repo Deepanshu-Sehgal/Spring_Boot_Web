@@ -17,6 +17,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class EmployeeDTO {
     private Long id;
+
     //@NotNull(message = "Required field in Employee: name")
     //@NotEmpty(message = "Name of the employee can not be empty")
     @NotBlank(message = "Name of the employee can not be empty")
@@ -37,7 +38,7 @@ public class EmployeeDTO {
     @NotNull(message = "Salary of Employee should be not null")
     @Positive(message = "Salary of Employee should be positive")
     @Digits(integer = 6, fraction = 2, message = "The salary can be in the form XXXXX.YY")
-    private Integer salary;
+    private Double salary;
 
     @PastOrPresent(message = "DateOfJoining field in Employee cannot be in the future")
     private LocalDate dateOfJoining;
