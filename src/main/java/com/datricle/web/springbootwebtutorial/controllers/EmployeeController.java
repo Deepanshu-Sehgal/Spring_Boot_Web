@@ -22,10 +22,10 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping(path = "/getSecretMessage")
-    public String getMySuperSecretMessage() {
-        return "Secret message: abchd@^&";
-    }
+//    @GetMapping(path = "/getSecretMessage")
+//    public String getMySuperSecretMessage() {
+//        return "Secret message: abchd@^&";
+//    }
 
 
     //PathVariable
@@ -39,8 +39,9 @@ public class EmployeeController {
 
     //RequestParams
     @GetMapping
-    public ResponseEntity<List<EmployeeDTO>> getAllEmployee(@RequestParam(name = "inputAge", required = false) Integer age, @RequestParam(required = false) String sortBy) {
-        return ResponseEntity.ok(employeeService.getAllEmployee());
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployees(@RequestParam(required = false, name = "inputAge") Integer age,
+                                                             @RequestParam(required = false) String sortBy) {
+        return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
     @PostMapping

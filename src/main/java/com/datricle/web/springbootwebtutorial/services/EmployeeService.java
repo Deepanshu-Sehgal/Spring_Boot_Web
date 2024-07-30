@@ -30,11 +30,10 @@ public class EmployeeService {
     public Optional<EmployeeDTO> getEmployeeById(Long id) {
 //        Optional<EmployeeEntity> employeeEntity = employeeRepository.findById(id);
 //        return employeeEntity.map(employeeEntity1 -> modelMapper.map(employeeEntity1,EmployeeDTO.class));
-
         return employeeRepository.findById(id).map(employeeEntity -> modelMapper.map(employeeEntity, EmployeeDTO.class));
     }
 
-    public List<EmployeeDTO> getAllEmployee() {
+    public List<EmployeeDTO> getAllEmployees() {
         List<EmployeeEntity> employeeEntities = employeeRepository.findAll();
         return employeeEntities
                 .stream()
